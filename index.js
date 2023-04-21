@@ -1,9 +1,9 @@
 // declaring the varibales 
 const App = require('express')()
-const Port = process.env.Port || 4500 
+const PORT = process.env.PORT || 4500 
 const dB = 'mocoservices'
-const hostname = '127.0.0.1'
-const uri = `mongodb://${hostname}/27017`
+const hostname = '0.0.0.0'
+const uri = `mongodb://${hostname}/${PORT}`
 
 // allow the form data 
 App.use(require('express')())
@@ -22,11 +22,11 @@ const server = async function () {
     try {
         const connected = await require('mongoose').connect(`${uri}`)
         if (connected) {
-            App.listen(Port, function () {
-                console.log(`Server is running at http://${hostname}:${Port} and database is connected to the ${dB}`)
+            App.listen(PORT, function () {
+                console.log(`Server is running at http://${hostname}:${PORT} and database is connected to the ${dB}`)
             })
             App.get('/', async function (req, res) {
-                res.send(`Server is running at http://${hostname}:${Port}`)
+                res.send(`Server is running at http://${hostname}:${PORT}`)
             })
         }
         else console.log(`Failed to connect to the ${dB}`)
