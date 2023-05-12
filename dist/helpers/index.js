@@ -9,7 +9,6 @@ async function createAdmin() {
         const adminstratorExist = await controllers.validateDocument({ schema: 'user', validationType: 'onCreate', condition: { phone: '0767379327' } })
         /* confirm there is no adminstrator */
         if (!adminstratorExist.success) {
-
             /* create new adminstrator */
             const adminstratorCreated = await controllers.createDocumentFieldEncryption({
                 schema: 'user',
@@ -22,7 +21,6 @@ async function createAdmin() {
                     location: "Jua Kali - Tanzania"
                 },
             })
-
             /* confirm adminstator has been created */
             if (adminstratorCreated.success)
                 console.log(`Adminstrator has been created.`, adminstratorCreated)
