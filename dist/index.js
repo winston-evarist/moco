@@ -1,4 +1,4 @@
-const hostname = '127.0.0.1'
+const hostname = '0.0.0.0'
 const uri = `mongodb://${hostname}/27017`
 const dataBase = 'moco'
 const PORT = process.env.PORT || 4500

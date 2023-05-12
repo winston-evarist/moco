@@ -25,7 +25,7 @@ async function createAdmin() {
             if (adminstratorCreated.success)
                 console.log(`Adminstrator has been created.`, adminstratorCreated)
             else
-                console.log(`Failed to create adminstrator account: ${adminstratorCreated.message}.`)
+                console.log(`Adminstrator account already exist.`)
 
         }
         else console.log(`Adminstrator already exist on the database`)
