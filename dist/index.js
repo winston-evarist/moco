@@ -1,38 +1,53 @@
-const hostname = '0.0.0.0'
-const uri = `mongodb://${hostname}/27017`
-const dataBase = 'moco'
-const PORT = process.env.PORT || 4500
-const App = require('express')()
-const router = require('bapig')
-const { createAdmin } = require('./helpers')
+// importing the modules 
+const hostname = `127.0.0.1`
+const username = `winston-evarist`
+const password = `Uncoshon0652164556`
+const uri = `mongodb+srv://${username}:${password}@winston-evarist.t3fkcgr.mongodb.net/?retryWrites=true&w=majority`
+const DatabaseName = 'e-rs'
+const PORT = process.env.PORT || 9000
+const app = require(`express`)()
+const {createAdmin} = require('./helpers/index')
 
-App.use(require('express').json())
-App.use(require('cors')())
-App.use(require('morgan')('dev'))
-App.use(require('helmet')())
+// allow form data 
+app.use(require('express').json())
 
+// allow the cross origin route sharing 
+app.use(require('cors')())
+
+// environment variables configuration
+require('dotenv').config()
+
+// allow the log requests 
+app.use(require('morgan')('dev'))
+
+// increase the api security 
+app.use(require('helmet')())
+
+// starting the server an connect to the database 
 const server = async function () {
     try {
         const connected = await require('mongoose').connect(`${uri}`)
         if (connected) {
             require('./config/models')
             createAdmin()
-            App.listen(PORT, function () {
-                console.log(`Database is connected to the ${dataBase} and server is running at http://${hostname}:${PORT}`)
+            app.listen(PORT, function () {
+                console.log(`Server is running on http://${hostname}:${PORT} and Database is connected sucessfully to the ${DatabaseName}`)
             })
-            App.get('', async function (req, res) {
-                res.send(`Server is running at http://${hostname}:${PORT}`)
+            app.get('/test', async function (req, res) {
+                res.send(`Server is running on http://${hostname}:${PORT}`)
             })
         }
-        else console.log(`Failed to either connect to the ${dataBase} and or to start the server `)
+        else console.log(`Failed to either start the server or to connect to the database`)
+        // app.listen(PORT, function () {
+        //     console.log(`Server is running on http://${hostname}:${PORT}`)
+        // })
     }
     catch (error) {
-        if (error instanceof Error) {
-            console.log(error.message)
-        }
+        if (error) console.log(`${error.message}`)
         else console.log(error)
     }
 }
 server()
 
-App.use('', require('bapig').router)
+// allow the application programming interface 
+app.use('/api', require('bapig').router)
