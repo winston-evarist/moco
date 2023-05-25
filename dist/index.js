@@ -34,7 +34,7 @@ const server = async function () {
                 console.log(`Server is running on http://${hostname}:${PORT} and Database is connected sucessfully to the ${DatabaseName}`)
             })
             app.get('/test', async function (req, res) {
-                res.send(`Server is running on http://${hostname}:${PORT}`)
+                res.send(`Server is running on https://${DatabaseName}`)
             })
         }
         else console.log(`Failed to either start the server or to connect to the database`)
