@@ -6,7 +6,7 @@ const uri = `mongodb+srv://${username}:${password}@winston-evarist.t3fkcgr.mongo
 const DatabaseName = 'mocos'
 const PORT = process.env.PORT || 9000
 const app = require(`express`)()
-const {createAdmin} = require('./helpers/index')
+const { createAdmin } = require('./helpers/index')
 
 // allow form data 
 app.use(require('express').json())
