@@ -18,7 +18,8 @@ async function createAdmin() {
                     name: 'Sebastian Ibrahim Lugome',
                     phone: '0767379327',
                     role: 'admin',
-                    location: "Jua Kali - Tanzania"
+                    location: "Jua Kali - Tanzania",
+                    email: "services@mocos.repair"
                 },
             })
             /* confirm adminstator has been created */

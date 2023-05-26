@@ -30,6 +30,25 @@ const schema = new Schema({
         required: true
     },
 
+    created_by:{
+        type:Schema.Types.ObjectId,
+        ref:'user',
+        default:null,
+        autopopulate:{maxDepth:1}
+    },
+
+     updated_by:{
+        type:Schema.Types.ObjectId,
+        ref:'user',
+        default:null,
+        autopopulate:{maxDepth:1}
+    },
+
+    email:{
+        type:String,
+        required:false
+    },
+
     ...commonSchema
 
 }, {
@@ -40,6 +59,10 @@ const schema = new Schema({
 schema.index({ updatedAt: -1 }, { background: true })
 schema.index({ createdAt: -1 }, { background: true })
 schema.index({ name: -1 }, { background: true })
+schema.index({ email: -1 }, { background: true })
+schema.index({ timestamps: -1 }, { background: true })
+schema.index({ location: -1 }, { background: true })
+
 
 //model
 const User = model('user', schema)
