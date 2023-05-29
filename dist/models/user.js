@@ -6,7 +6,7 @@ const schema = new Schema({
     name: {
         type: String,
         required: true,
-        index: true
+        unique: true
     },
 
     phone: {
@@ -17,7 +17,7 @@ const schema = new Schema({
 
     role: {
         type: String,
-        default: 'Adminstrator'
+        default: 'customer'
     },
 
     password: {
@@ -30,23 +30,23 @@ const schema = new Schema({
         required: true
     },
 
-    created_by:{
-        type:Schema.Types.ObjectId,
-        ref:'user',
-        default:null,
-        autopopulate:{maxDepth:1}
+    created_by: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        default: null,
+        autopopulate: { maxDepth: 1 }
     },
 
-     updated_by:{
-        type:Schema.Types.ObjectId,
-        ref:'user',
-        default:null,
-        autopopulate:{maxDepth:1}
+    updated_by: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        default: null,
+        autopopulate: { maxDepth: 1 }
     },
 
-    email:{
-        type:String,
-        required:false
+    email: {
+        type: String,
+        required: false
     },
 
     ...commonSchema
@@ -62,7 +62,7 @@ schema.index({ name: -1 }, { background: true })
 schema.index({ email: -1 }, { background: true })
 schema.index({ timestamps: -1 }, { background: true })
 schema.index({ location: -1 }, { background: true })
-
+schema.plugin(require('mongoose-autopopulate'))
 
 //model
 const User = model('user', schema)

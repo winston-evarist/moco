@@ -9,6 +9,20 @@ const schema = new Schema({
         index: true
     },
 
+    created_by: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        default: null,
+        autopopulate: { maxDepth: 1 }
+    },
+
+    updated_by: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        default: null,
+        autopopulate: { maxDepth: 1 }
+    },
+
     ...commonSchema
 
 }, {

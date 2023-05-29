@@ -2,7 +2,8 @@
 const hostname = `127.0.0.1`
 const username = `winston-evarist`
 const password = `Uncoshon0652164556`
-const uri = `mongodb+srv://${username}:${password}@winston-evarist.t3fkcgr.mongodb.net/?retryWrites=true&w=majority`
+// const uri = `mongodb+srv://${username}:${password}@winston-evarist.t3fkcgr.mongodb.net/?retryWrites=true&w=majority`
+const uri = `mongodb://localhost:27017`
 const DatabaseName = 'mocos'
 const PORT = process.env.PORT || 9000
 const app = require(`express`)()

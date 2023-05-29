@@ -15,7 +15,7 @@ async function createAdmin() {
                 fieldToEncrypt: 'password',
                 documentData: {
                     password: 'saGma@2021',
-                    name: 'Sebastian Ibrahim Lugome',
+                    name: 'Sebastian Ibrahim Lugome'.toLocaleLowerCase(),
                     phone: '0767379327',
                     role: 'admin',
                     location: "Jua Kali - Tanzania",
@@ -24,7 +24,7 @@ async function createAdmin() {
             })
             /* confirm adminstator has been created */
             if (adminstratorCreated.success)
-                console.log(`Adminstrator has been created.`, adminstratorCreated)
+                console.log(`Adminstrator has been created.`)
             else
                 console.log(`Adminstrator account already exist.`)
 

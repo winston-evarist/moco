@@ -27,6 +27,20 @@ const schema = new Schema({
         autopopulate: { maxDepth: 1 }
     },
 
+    created_by: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        default: null,
+        autopopulate: { maxDepth: 1 }
+    },
+
+    updated_by: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        default: null,
+        autopopulate: { maxDepth: 1 }
+    },
+
     ...commonSchema
 
 }, {
@@ -39,6 +53,7 @@ schema.index({ createdAt: -1 }, { background: true })
 schema.index({ title: -1 }, { background: true })
 schema.index({ description: -1 }, { background: true })
 schema.index({ category: -1 }, { background: true })
+schema.plugin(require('mongoose-autopopulate'))
 
 //model
 const Blog = model('blog', schema)
