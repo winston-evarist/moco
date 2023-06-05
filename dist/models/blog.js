@@ -19,14 +19,6 @@ const schema = new Schema({
         required: false
     },
 
-    category: {
-        ref: 'category',
-        type: Schema.Types.ObjectId,
-        default: null,
-        index: true,
-        autopopulate: { maxDepth: 1 }
-    },
-
     created_by: {
         type: Schema.Types.ObjectId,
         ref: 'user',
@@ -52,7 +44,6 @@ schema.index({ updatedAt: -1 }, { background: true })
 schema.index({ createdAt: -1 }, { background: true })
 schema.index({ title: -1 }, { background: true })
 schema.index({ description: -1 }, { background: true })
-schema.index({ category: -1 }, { background: true })
 schema.plugin(require('mongoose-autopopulate'))
 
 //model
