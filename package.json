@@ -52,6 +52,7 @@
     "etag": "^1.8.1",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
+    "express-upload": "^0.1.0",
     "fast-web-kit": "^0.2.1",
     "finalhandler": "^1.2.0",
     "follow-redirects": "^1.15.2",

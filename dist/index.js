@@ -9,11 +9,11 @@ const PORT = process.env.PORT || 9000
 const app = require(`express`)()
 const { createAdmin } = require('./helpers/index')
 
+// allow the cross origin route sharing 
+app.use(require('cors')({origin:"*"}))
+
 // allow form data 
 app.use(require('express').json())
-
-// allow the cross origin route sharing 
-app.use(require('cors')())
 
 // environment variables configuration
 require('dotenv').config()
@@ -22,7 +22,14 @@ require('dotenv').config()
 app.use(require('morgan')('dev'))
 
 // increase the api security 
-app.use(require('helmet')())
+app.use(require('helmet')({crossOriginResourcePolicy:false}))
+
+// static files 
+// app.use(require('express').static(require('path').join(__dirname, '../public')))
+app.use(require('express').static(require('bapig').helpers.staticFilesDirectory))
+
+//Allow express-fileupload
+app.use(require('express-fileupload')())
 
 // starting the server an connect to the database 
 const server = async function () {
@@ -39,9 +46,6 @@ const server = async function () {
             })
         }
         else console.log(`Failed to either start the server or to connect to the database`)
-        // app.listen(PORT, function () {
-        //     console.log(`Server is running on http://${hostname}:${PORT}`)
-        // })
     }
     catch (error) {
         if (error) console.log(`${error.message}`)
