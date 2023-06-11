@@ -10,7 +10,7 @@ const app = require(`express`)()
 const { createAdmin } = require('./helpers/index')
 
 // allow the cross origin route sharing 
-app.use(require('cors')({origin:"*"}))
+app.use(require('cors')({ origin: "*" }))
 
 // allow form data 
 app.use(require('express').json())
@@ -22,7 +22,7 @@ require('dotenv').config()
 app.use(require('morgan')('dev'))
 
 // increase the api security 
-app.use(require('helmet')({crossOriginResourcePolicy:false}))
+app.use(require('helmet')({ crossOriginResourcePolicy: false }))
 
 // static files 
 // app.use(require('express').static(require('path').join(__dirname, '../public')))
