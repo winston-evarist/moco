@@ -9,6 +9,13 @@ const schema = new Schema({
         index: true
     },
 
+    price: {
+        type: String,
+        required: true,
+        index: true
+    },
+
+
     model: {
         ref: 'model',
         type: Schema.Types.ObjectId,
@@ -41,6 +48,7 @@ const schema = new Schema({
 schema.index({ updatedAt: -1 }, { background: true })
 schema.index({ createdAt: -1 }, { background: true })
 schema.index({ name: -1 }, { background: true })
+schema.index({ price: -1 }, { background: true })
 schema.index({ model: -1 }, { background: true })
 schema.plugin(require('mongoose-autopopulate'))
 
