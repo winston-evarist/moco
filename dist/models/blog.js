@@ -14,7 +14,7 @@ const schema = new Schema({
         required: true
     },
 
-    image: {
+    pic: {
         type: String,
         required: false
     },
