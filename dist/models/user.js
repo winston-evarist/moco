@@ -55,6 +55,11 @@ const schema = new Schema({
         required: true
     },
 
+    device: {
+        type: String,
+        required: true
+    },
+
     created_by: {
         type: Schema.Types.ObjectId,
         ref: 'user',
@@ -82,6 +87,16 @@ const schema = new Schema({
     fee: {
         type: String,
         required: true
+    },
+
+    resetCode: {
+        type: String,
+        default: null
+    },
+
+    resetCodeExpires: {
+        type: Date,
+        default: null
     },
 
     payment: {

@@ -30,7 +30,8 @@ async function createAdmin() {
                     payment: 'null',
                     fee: 'null',
                     paid: 'null',
-                    remain: 'null'
+                    remain: 'null',
+                    device:'null'
                 },
             })
             /* confirm adminstator has been created */
