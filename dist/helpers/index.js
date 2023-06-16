@@ -18,7 +18,10 @@ async function createAdmin() {
                     name: 'Sebastian Ibrahim Lugome'.toLocaleLowerCase(),
                     phone: '0767379327',
                     role: 'admin',
-                    location: "53114 Mbeya , Tanzania",
+                    location: {
+                        Region: 'Mbeya',
+                        District: "Mbeya Mjini"
+                    },
                     email: "services@mocos.repair",
                     service: 'null',
                     code: '567894',

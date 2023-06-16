@@ -41,7 +41,7 @@ const schema = new Schema({
     },
 
     location: {
-        type: String,
+        type: Object,
         required: true
     },
 
